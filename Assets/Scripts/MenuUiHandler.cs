@@ -9,8 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuUiHandler : MonoBehaviour
 {
-    private const string ScoreTitle = "Best Score: ";
-
     [SerializeField]
     private TextMeshProUGUI titleText;
     [SerializeField]
@@ -25,7 +23,7 @@ public class MenuUiHandler : MonoBehaviour
     {
         GameManager.Instance.LoadGameData();
 
-        titleText.text = ScoreTitle + GameManager.Instance.lastSavedData.playerName;
+        titleText.text = GameManager.Instance.GetBestScoreText();
         playButton.interactable = false;
         nameInput.onValueChanged.AddListener(OnInputChanged);
         playButton.onClick.AddListener(StartNewGame);

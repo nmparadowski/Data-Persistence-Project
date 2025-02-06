@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private const string ScoreTitle = "Best Score: ";
+
     [Serializable]
     public class SaveData
     {
@@ -61,5 +63,11 @@ public class GameManager : MonoBehaviour
 
             File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
         }
+    }
+
+    //Returns phrase with high score
+    public string GetBestScoreText()
+    {
+        return $"{ScoreTitle}{Instance.lastSavedData.playerName} : {Instance.lastSavedData.highScore}";
     }
 }
